@@ -50,32 +50,25 @@
         </ul>
     </div>
     <div class="table-responsive">
-        <table class="table">
+        <table id="golfcard" class="table">
             <thead>
             <tr id="holeheader" class="holebox">
-
+            <th>Hole: </th>
             </tr>
-            <tr class="parbox">
-
+            <tr  id="parheader" class="parbox">
+                <th>Par: </th>
             </tr>
-            <tr class="scorebox">
-
+            <tr id="yardheader"class="yardbox">
+                <th>Yards: </th>
             </tr>
-            <tr class="yardbox">
-
+            <tr id="handicapheader"class="handicapbox">
+                <th>Handicap: </th>
             </tr>
-            <tr class="handicapbox">
-
-            </tr>
+            <!--this is where players go -->
             </thead>
         </table>
-        <table class="table table-bordered">
-            <thead>
-            <tr class="playerbox">
 
-            </tr>
-            </thead>
-        </table>
+
     </div>
 </div>
 <script>
@@ -86,19 +79,33 @@
 
         for(var c = 1 ; c <= numholes ; c++){
             //<th>hole #</th>
-            $("#holeheader").append("<th>hole " + c + "</th>");
+            $("#holeheader").append("<th>Hole " + c + "</th>");
         }
-
+        for(var c = 1 ; c <= numholes ; c++){
+            //<th>hole #</th>
+            $("#parheader").append("<th></th>");
+        }
+        for(var c = 1 ; c <= numholes ; c++){
+            //<th>hole #</th>
+            $("#yardheader").append("<th></th>");
+        }
+        for(var c = 1 ; c <= numholes ; c++){
+            //<th>hole #</th>
+            $("#handicapheader").append("<th></th>");
+        }
         for(var p = 1 ; p <= numplayers; p++){//nested loop insert holes for each of the player rows
-            $(".leftbox").append("<div class='playername'>player" + p +"</div>");
-            for( var h = 1; h <= numholes; h++){
-                $(".col" +h).append("<input class='holebox' type='text' id='player" + p + "hole" + h + "'/>");
+            $("#golfcard").append("<tr id='player" + p + "'  class='playercontainer'><td>Player: " + p + "</td></tr>");
+                 for( var h = 1; h <= numholes; h++){$("#player" + p).append("<td><input class='holebox' type='text' id='player" + p + "hole" + h + "'/></td>");
             }
-
-
         }
+        $("input.holebox").keydown(function (event) {
+            var isnumeric = $.inArray(event.keyCode, [8, 9, 10, 37, 38, 39, 40, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57]);
+            isnumeric = isnumeric >= 0;
+            return isnumeric;
 
+        });
     });
+
 
 </script>
 </body>

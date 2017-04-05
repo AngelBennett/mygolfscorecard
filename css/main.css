@@ -55,7 +55,7 @@ div.table-responsive {
     background-color:  white;
     -webkit-background-size: cover;
     width: 95%;
-    height: 200px;
+    height: 500px;
 }
 div.dropdown{
     width: 100px;
@@ -69,4 +69,9 @@ h3{
 }
 .playerbox{
  background-color: #EEF1EE;
+}
+th{
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    text-align:left;
 }
