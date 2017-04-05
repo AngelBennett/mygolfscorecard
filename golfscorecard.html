@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Forum" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src ="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="js/bootstrap.js" type="text/javascript"></script>
+    <style>
+
+
+    </style>
+</head>
+<body>
+<div class="cardcontainer">
+    <div class="title">
+        <h3>Golf Score Card</h3>
+    </div>
+
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Golf Courses
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">course map</a></li>
+        </ul>
+    </div>
+
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Type
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">course map</a></li>
+        </ul>
+    </div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr id="holeheader" class="holebox">
+
+            </tr>
+            <tr class="parbox">
+
+            </tr>
+            <tr class="scorebox">
+
+            </tr>
+            <tr class="yardbox">
+
+            </tr>
+            <tr class="handicapbox">
+
+            </tr>
+            </thead>
+        </table>
+        <table class="table table-bordered">
+            <thead>
+            <tr class="playerbox">
+
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<script>
+    var numholes = 18;
+    var numplayers = 6;
+
+    $(function() {
+
+        for(var c = 1 ; c <= numholes ; c++){
+            //<th>hole #</th>
+            $("#holeheader").append("<th>hole " + c + "</th>");
+        }
+
+        for(var p = 1 ; p <= numplayers; p++){//nested loop insert holes for each of the player rows
+            $(".leftbox").append("<div class='playername'>player" + p +"</div>");
+            for( var h = 1; h <= numholes; h++){
+                $(".col" +h).append("<input class='holebox' type='text' id='player" + p + "hole" + h + "'/>");
+            }
+
+
+        }
+
+    });
+
+</script>
+</body>
+</html>
