@@ -21,7 +21,7 @@
     <div class="title">
         <h3>Golf Score Card</h3>
     </div>
-
+<button id="playeraddbtn" type="button">add player</button>
     <div class="dropdown">
         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             Golf Courses
@@ -73,8 +73,21 @@
 </div>
 <script>
     var numholes = 18;
-    var numplayers = 6;
+    var numplayers = 0;
 
+    function addPlayer() {
+
+        numplayers = numplayers + 1;
+        var p = numplayers;
+
+        $("#golfcard").append("<tr id='player" + p + "'  class='playercontainer'><td><input type='text' class='playername' placeholder='player name'/></td></tr>");
+
+        for( var h = 1; h <= numholes; h++)
+        {
+            $("#player" + p).append("<td><input class='holebox' type='text' id='player" + p + "hole" + h + "'/></td>");
+
+        }
+    }
     $(function() {
 
         for(var c = 1 ; c <= numholes ; c++){
@@ -93,16 +106,19 @@
             //<th>hole #</th>
             $("#handicapheader").append("<th></th>");
         }
-        for(var p = 1 ; p <= numplayers; p++){//nested loop insert holes for each of the player rows
-            $("#golfcard").append("<tr id='player" + p + "'  class='playercontainer'><td>Player: " + p + "</td></tr>");
-                 for( var h = 1; h <= numholes; h++){$("#player" + p).append("<td><input class='holebox' type='text' id='player" + p + "hole" + h + "'/></td>");
-            }
-        }
-        $("input.holebox").keydown(function (event) {
+                addPlayer();
+
+        function checkForNumbers(){
+            $("input.holebox").keydown(function (event) {
             var isnumeric = $.inArray(event.keyCode, [8, 9, 10, 37, 38, 39, 40, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57]);
             isnumeric = isnumeric >= 0;
             return isnumeric;
+        
+        });
+        }
+        $("#playeraddbtn").click(function (event) {
 
+            addPlayer();
         });
     });
 
@@ -110,3 +126,4 @@
 </script>
 </body>
 </html>
+
